@@ -11,12 +11,12 @@
   "author": "brunopetrolini <brunopetrolini@hotmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.11.6",
-    "tsup": "^8.0.1",
-    "tsx": "^4.7.0",
-    "typescript": "^5.3.3"
+    "@types/node": "20.11.6",
+    "tsup": "8.0.1",
+    "tsx": "4.7.0",
+    "typescript": "5.3.3"
   },
   "dependencies": {
-    "fastify": "^4.25.2"
+    "fastify": "4.25.2"
   }
 }
