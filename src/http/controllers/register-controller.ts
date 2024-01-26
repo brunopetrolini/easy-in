@@ -4,10 +4,7 @@ import { UserAlreadyExistsError } from '@/usecases/error'
 import type { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
-export async function register(
-  request: FastifyRequest,
-  reply: FastifyReply,
-): Promise<FastifyReply> {
+export async function register(request: FastifyRequest, reply: FastifyReply) {
   const registerBodySchema = z.object({
     name: z.string(),
     email: z.string().email(),
