@@ -1,5 +1,6 @@
 import type { UsersRepository } from '@/repositories'
 import { hash } from 'bcryptjs'
+import { UserAlreadyExistsError } from './error'
 
 interface RegisterUseCaseProps {
   name: string
@@ -13,11 +14,12 @@ export class RegisterUseCase {
   public async execute(props: RegisterUseCaseProps): Promise<void> {
     const { name, email, password } = props
 
-    const passwordHash = await hash(password, 6)
+    const saltRounds = 6
+    const passwordHash = await hash(password, saltRounds)
 
     const userWithSameEmail = await this.usersRepository.findByEmail(email)
     if (userWithSameEmail) {
-      throw new Error('User with same email already exists')
+      throw new UserAlreadyExistsError()
     }
 
     await this.usersRepository.insert({ name, email, passwordHash })
