@@ -11,7 +11,9 @@
   "author": "brunopetrolini <brunopetrolini@hotmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@rocketseat/eslint-config": "2.1.0",
     "@types/node": "20.11.6",
+    "eslint": "8.56.0",
     "tsup": "8.0.1",
     "tsx": "4.7.0",
     "typescript": "5.3.3"
