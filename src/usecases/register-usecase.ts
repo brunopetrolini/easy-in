@@ -8,10 +8,9 @@ interface RegisterUseCaseProps {
 }
 
 export class RegisterUseCase {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(private readonly usersRepository: UsersRepository) {}
 
-  public async execute(props: RegisterUseCaseProps) {
+  public async execute(props: RegisterUseCaseProps): Promise<void> {
     const { name, email, password } = props
 
     const passwordHash = await hash(password, 6)
