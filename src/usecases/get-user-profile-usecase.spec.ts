@@ -15,11 +15,9 @@ describe('Get User Profile Use Case', () => {
 
   it('should be able to get user profile', async () => {
     const createdUser = await usersRepository.insert({
-      id: 'user_id',
       name: 'John Doe',
       email: 'johndoe@mail.com',
       passwordHash: 'hashed_password',
-      createdAt: new Date(),
     })
 
     const { user } = await sut.execute({ userId: createdUser.id })
@@ -33,7 +31,6 @@ describe('Get User Profile Use Case', () => {
       name: 'John Doe',
       email: 'johndoe@mail.com',
       passwordHash: 'hashed_password',
-      createdAt: new Date(),
     })
 
     const promise = sut.execute({ userId: 'wrong_id' })

@@ -9,7 +9,7 @@ export class InMemoryUsersRepository implements UsersRepository {
 
   public async insert(data: Prisma.UserCreateInput): Promise<User> {
     this.users.push({
-      id: randomUUID(),
+      id: data.id ?? randomUUID(),
       name: data.name,
       email: data.email,
       passwordHash: data.passwordHash,

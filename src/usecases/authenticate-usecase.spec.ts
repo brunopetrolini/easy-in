@@ -4,7 +4,6 @@ import { hash } from 'bcryptjs'
 import { AuthenticateUseCase } from './authenticate-usecase'
 import { InMemoryUsersRepository } from '@/repositories'
 import type { UsersRepository } from '@/repositories'
-import { randomUUID } from 'crypto'
 import { InvalidCredentialsError } from './error'
 
 describe('Authenticate Use Case', () => {
@@ -16,11 +15,9 @@ describe('Authenticate Use Case', () => {
 
     const passwordHash = await hash('any_password', 6)
     await usersRepository.insert({
-      id: randomUUID(),
       name: 'John Doe',
       email: 'johndoe@mail.com',
       passwordHash,
-      createdAt: new Date(),
     })
 
     sut = new AuthenticateUseCase(usersRepository)
