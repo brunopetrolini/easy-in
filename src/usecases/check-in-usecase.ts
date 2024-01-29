@@ -17,6 +17,15 @@ export class CheckInUseCase {
   public async execute(
     input: CheckInUseCaseInput,
   ): Promise<CheckInUseCaseOutput> {
+    const checkInOnSameDate = await this.checkInsRepository.findByUserIdOnDate(
+      input.userId,
+      new Date(),
+    )
+
+    if (checkInOnSameDate) {
+      throw new Error('User already checked in today')
+    }
+
     const checkIn = await this.checkInsRepository.insert(input)
 
     return { checkIn }

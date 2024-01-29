@@ -9,14 +9,14 @@
 - [ ] Deve ser possível o usuário obter seu histórico de check-ins;
 - [ ] Deve ser possível o usuário buscar academias próximas;
 - [ ] Deve ser possível o usuário buscar academias pelo nome;
-- [ ] Deve ser possível o usuário realizar check-in em uma academia;
+- [x] Deve ser possível o usuário realizar check-in em uma academia;
 - [ ] Deve ser possível validar o check-in de um usuário;
 - [ ] Deve ser possível cadastrar uma academia;
 
 ## RNs (regras de negócio)
 
 - [x] O usuário não deve poder se cadastrar com um e-mail duplicado;
-- [ ] O usuário não pode fazer dois check-ins no mesmo dia;
+- [x] O usuário não pode fazer dois check-ins no mesmo dia;
 - [ ] O usuário não pode fazer check-in se não estiver a no mínimo 100m da academia;
 - [ ] O check-in só pode ser validado até 20min após criado;
 - [ ] O check-in só pode ser validado por administradores;
