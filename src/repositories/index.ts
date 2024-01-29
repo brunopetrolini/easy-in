@@ -1,5 +1,6 @@
 export * from './in-memory/in-memory-users-repository'
 export * from './in-memory/in-memory-check-ins-repository'
+export * from './in-memory/in-memory-gyms-repository'
 export * from './prisma/prisma-users-repository'
 export * from './users-repository'
 export * from './check-ins-repository'
