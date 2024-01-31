@@ -5,7 +5,7 @@ import {
   InMemoryGymsRepository,
 } from '@/repositories'
 import { CheckInUseCase } from './check-in-usecase'
-import { UserAlreadyCheckedInTodayError, UserTooFarFromGymError } from './error'
+import { MaxDistanceError, MaxNumberOfCheckInsError } from './error'
 
 describe('Check In Use Case', () => {
   let checkInsRepository: InMemoryCheckInsRepository
@@ -65,7 +65,7 @@ describe('Check In Use Case', () => {
       userLongitude: -46.5617159,
     })
 
-    await expect(promise).rejects.toBeInstanceOf(UserAlreadyCheckedInTodayError)
+    await expect(promise).rejects.toBeInstanceOf(MaxNumberOfCheckInsError)
   })
 
   it('should not be able to check in twice but in different days', async () => {
@@ -109,6 +109,6 @@ describe('Check In Use Case', () => {
       userLongitude: -46.4617472,
     })
 
-    await expect(promise).rejects.toBeInstanceOf(UserTooFarFromGymError)
+    await expect(promise).rejects.toBeInstanceOf(MaxDistanceError)
   })
 })
