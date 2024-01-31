@@ -1,5 +1,4 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { Decimal } from '@prisma/client/runtime/library'
 
 import {
   InMemoryCheckInsRepository,
@@ -12,18 +11,18 @@ describe('Check In Use Case', () => {
   let gymsRepository: InMemoryGymsRepository
   let sut: CheckInUseCase
 
-  beforeEach(() => {
+  beforeEach(async () => {
     checkInsRepository = new InMemoryCheckInsRepository()
     gymsRepository = new InMemoryGymsRepository()
     sut = new CheckInUseCase(checkInsRepository, gymsRepository)
 
-    gymsRepository.gyms.push({
+    await gymsRepository.insert({
       id: 'center_gym_id',
       title: 'Bio Health - Center',
       description: 'The best gym in the city',
-      phone: '',
-      latitude: new Decimal(-21.7855024),
-      longitude: new Decimal(-46.5626038),
+      phone: null,
+      latitude: -21.7855024,
+      longitude: -46.5626038,
     })
 
     vi.useFakeTimers()
@@ -93,13 +92,13 @@ describe('Check In Use Case', () => {
   it('should not be able to check in on distant gym', async () => {
     vi.setSystemTime(new Date(2024, 0, 20, 5, 0, 0))
 
-    gymsRepository.gyms.push({
+    await gymsRepository.insert({
       id: 'avenue_gym_id',
       title: 'Bio Health - Av. João Pinheiro',
       description: 'The best gym in the city',
       phone: '35999999999',
-      latitude: new Decimal(-21.7852725),
-      longitude: new Decimal(-46.5815417),
+      latitude: -21.7852725,
+      longitude: -46.5815417,
     })
 
     const promise = sut.execute({
