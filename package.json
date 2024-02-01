@@ -10,7 +10,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "test:ui": "vitest run --ui"
+    "test:ui": "vitest --ui"
   },
   "author": "brunopetrolini <brunopetrolini@hotmail.com>",
   "license": "MIT",
