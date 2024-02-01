@@ -4,6 +4,7 @@ import type { CheckInsRepository } from '@/repositories'
 
 interface FetchUserCheckInsHistoryUseCaseInput {
   userId: string
+  page: number
 }
 
 interface FetchUserCheckInsHistoryUseCaseOutput {
@@ -13,10 +14,13 @@ interface FetchUserCheckInsHistoryUseCaseOutput {
 export class FetchUserCheckInsHistoryUseCase {
   constructor(private readonly checkInsRepository: CheckInsRepository) {}
 
-  public async execute({
-    userId,
-  }: FetchUserCheckInsHistoryUseCaseInput): Promise<FetchUserCheckInsHistoryUseCaseOutput> {
-    const checkIns = await this.checkInsRepository.findManyByUserId(userId)
+  public async execute(
+    input: FetchUserCheckInsHistoryUseCaseInput,
+  ): Promise<FetchUserCheckInsHistoryUseCaseOutput> {
+    const checkIns = await this.checkInsRepository.findManyByUserId(
+      input.userId,
+      input.page,
+    )
     return { checkIns }
   }
 }
