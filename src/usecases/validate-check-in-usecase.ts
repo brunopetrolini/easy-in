@@ -4,20 +4,20 @@ import type { CheckInsRepository } from '@/repositories'
 import { LateCheckInValidationError, ResourceNotFoundError } from './error'
 import dayjs from 'dayjs'
 
-interface ValidadeCheckInInput {
+interface ValidateCheckInUseCaseInput {
   checkInId: string
 }
 
-interface ValidadeCheckInOutput {
+interface ValidateCheckInUseCaseOutput {
   checkIn: CheckIn
 }
 
-export class ValidadeCheckInUseCase {
+export class ValidateCheckInUseCase {
   constructor(private readonly checkInRepository: CheckInsRepository) {}
 
   async execute({
     checkInId,
-  }: ValidadeCheckInInput): Promise<ValidadeCheckInOutput> {
+  }: ValidateCheckInUseCaseInput): Promise<ValidateCheckInUseCaseOutput> {
     const checkIn = await this.checkInRepository.findById(checkInId)
 
     if (!checkIn) {

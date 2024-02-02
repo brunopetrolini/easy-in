@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import { prisma } from '@/lib'
 import { CheckInsRepository } from '../check-ins-repository'
 
-export class PrismaCheckInRepository implements CheckInsRepository {
+export class PrismaCheckInsRepository implements CheckInsRepository {
   public async insert(
     data: Prisma.CheckInUncheckedCreateInput,
   ): Promise<CheckIn> {
