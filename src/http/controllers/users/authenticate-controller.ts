@@ -30,10 +30,10 @@ export async function authenticate(
     )
 
     return reply.status(200).send({ access_token: token })
-  } catch (error) {
-    if (error instanceof InvalidCredentialsError) {
-      return reply.status(401).send({ message: error.message })
+  } catch (err) {
+    if (err instanceof InvalidCredentialsError) {
+      return reply.status(401).send({ message: err.message })
     }
-    throw error
+    throw err
   }
 }
