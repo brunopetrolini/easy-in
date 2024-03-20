@@ -8,8 +8,8 @@ import { nearby } from './nearby-controller'
 export async function gymsRoutes(app: FastifyInstance) {
   app.addHook('onRequest', verifyAuthMiddy)
 
-  app.get('/gyms', search)
-  app.get('/gyms', nearby)
+  app.get('/gyms/search', search)
+  app.get('/gyms/nearby', nearby)
 
   /** Admin only */
   app.post('/gyms', { onRequest: [verifyUserRoleMiddy('ADMIN')] }, create)
